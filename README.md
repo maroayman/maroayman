@@ -19,5 +19,5 @@ Want to connect? Let’s make magic happen! 🌈---
 ## My Skills 🚀
 ```diff
 + Programming Languages: C, Python, Java, Go
-+ Frameworks: Echo, Fiber (Golang)
-+ Tools: Docker, Kubernetes
++ Tools: Docker, Kubernetes 
++ Operating Systems : Windows , Linux
