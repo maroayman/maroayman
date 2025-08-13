@@ -19,5 +19,6 @@ Want to connect? Let’s make magic happen! 🌈---
 ## My Skills 🚀
 ```diff
 + Programming Languages: C, Python, Java, Go
-+ Tools: Docker, Kubernetes 
++ Tools: Docker, Kubernetes , Terraform , Ansible , Jenkins
 + Operating Systems : Windows , Linux
++ Cloud Platforms : AWS , GCP , Azure , Huawei
