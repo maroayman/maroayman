@@ -54,12 +54,18 @@ export default function ArticlesPage() {
   // Auto-refresh status
   const [nextRefreshTime, setNextRefreshTime] = useState<Date | null>(null)
   const [autoRefreshEnabled, setAutoRefreshEnabled] = useState(true)
+  const [isClient, setIsClient] = useState(false)
   
   // Get configuration settings
   const showDevControls = currentConfig.showDebugControls
   const refreshInterval = currentConfig.refreshIntervalMinutes * 60 * 1000
   const showRefreshTimer = currentConfig.showRefreshTimer
   const showAutoRefreshToggle = currentConfig.showAutoRefreshToggle
+
+  // Handle client-side mounting
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   // Function to load articles data
   // This automatically fetches both articles AND series from Hashnode
@@ -97,8 +103,8 @@ export default function ArticlesPage() {
           }))
           
           // Transform series data
-          const transformedSeries = hashnodeData.data.series.map((s: any) => ({
-            id: Date.now() + Math.random(), // Generate a temporary ID
+          const transformedSeries = hashnodeData.data.series.map((s: any, index: number) => ({
+            id: `series-${s.slug}-${index}`, // Use deterministic ID
             name: s.name,
             slug: s.slug,
             description: s.description,
@@ -141,6 +147,8 @@ export default function ArticlesPage() {
 
   // Auto-refresh articles periodically and on visibility change
   useEffect(() => {
+    if (!isClient) return // Only run on client side
+
     // Function to handle visibility change
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
@@ -172,7 +180,7 @@ export default function ArticlesPage() {
       if (interval) clearInterval(interval)
       document.removeEventListener('visibilitychange', handleVisibilityChange)
     }
-  }, [autoRefreshEnabled])
+  }, [autoRefreshEnabled, isClient])
 
   const handleSync = async () => {
     setSyncing(true)
@@ -275,7 +283,7 @@ export default function ArticlesPage() {
             <div className="flex items-center justify-between mb-4">
               <h1 className="text-4xl font-bold text-primary">$ cat articles/</h1>
               {/* Development-only controls */}
-              {showDevControls && (
+              {isClient && showDevControls && (
                 <div className="flex gap-2">
                   <Button onClick={fetchFromAPI} disabled={apiLoading} variant="outline" size="sm" className="bg-transparent">
                     {apiLoading ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : <Code className="h-4 w-4 mr-2" />}
@@ -294,13 +302,13 @@ export default function ArticlesPage() {
           </div>
 
           <Tabs defaultValue="articles" className="w-full">
-            <TabsList className={`grid w-full ${showDevControls ? 'grid-cols-2' : 'grid-cols-1'}`}>
+            <TabsList className={`grid w-full ${isClient && showDevControls ? 'grid-cols-2' : 'grid-cols-1'}`}>
               <TabsTrigger value="articles" className="flex items-center gap-2">
                 <BookOpen className="h-4 w-4" />
                 Articles View
               </TabsTrigger>
               {/* API Response tab only in development */}
-              {showDevControls && (
+              {isClient && showDevControls && (
                 <TabsTrigger value="api" className="flex items-center gap-2">
                   <Database className="h-4 w-4" />
                   API Response
@@ -317,18 +325,18 @@ export default function ArticlesPage() {
                         <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                         Live: {articles.length} articles from Hashnode
                       </p>
-                      {lastSync && <p>Last updated: {new Date(lastSync).toLocaleString()}</p>}
+                      {isClient && lastSync && <p>Last updated: {new Date(lastSync).toLocaleString()}</p>}
                       {/* Development-only detailed info */}
-                      {showRefreshTimer && autoRefreshEnabled && nextRefreshTime && (
+                      {isClient && showRefreshTimer && autoRefreshEnabled && nextRefreshTime && (
                         <p className="text-xs">Next auto-refresh: {nextRefreshTime.toLocaleTimeString()}</p>
                       )}
                       {/* Production-friendly message */}
-                      {!showDevControls && (
+                      {isClient && !showDevControls && (
                         <p className="text-xs">Articles automatically sync with your Hashnode blog every {currentConfig.refreshIntervalMinutes} minutes</p>
                       )}
                     </div>
                     {/* Development-only toggle */}
-                    {showAutoRefreshToggle && (
+                    {isClient && showAutoRefreshToggle && (
                       <button
                         onClick={() => setAutoRefreshEnabled(!autoRefreshEnabled)}
                         className="text-xs px-2 py-1 rounded border border-primary/20 hover:bg-primary/10 transition-colors"
@@ -595,7 +603,7 @@ export default function ArticlesPage() {
             </TabsContent>
 
             {/* API Response tab - development only */}
-            {showDevControls && (
+            {isClient && showDevControls && (
               <TabsContent value="api" className="mt-6">
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
