@@ -1,14 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export for GitHub Pages
-  output: 'export',
-  trailingSlash: true,
-  
-  // Asset optimization
-  images: {
-    unoptimized: true,
-  },
-  
   // Build configuration
   eslint: {
     ignoreDuringBuilds: true,
@@ -17,9 +8,23 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   
-  // Base path for GitHub Pages (update with your repo name)
-  basePath: process.env.NODE_ENV === 'production' ? '/portfolio' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/portfolio/' : '',
+  // Image optimization
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.hashnode.com',
+        port: '',
+        pathname: '/res/hashnode/image/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.hashnode.dev',
+        port: '',
+        pathname: '/**',
+      }
+    ],
+  },
 }
 
 export default nextConfig
