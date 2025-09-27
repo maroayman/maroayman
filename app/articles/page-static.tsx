@@ -1,11 +1,24 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import { formatDate, formatReadTime, fetchHashnodeArticles, HashnodeArticle } from "@/lib/hashnode"
+import { formatDate, formatReadTime, fetchHashnodeArticles } from "@/lib/hashnode"
 import { ExternalLink, Calendar, Clock, BookOpen } from "lucide-react"
 
+interface Article {
+  id: string
+  title: string
+  brief: string | null
+  slug: string
+  publishedAt: string
+  readTimeInMinutes: number | null
+  coverImage: { url: string } | null
+  url: string
+  series: { name: string; slug: string } | null
+  tags: Array<{ name: string; slug: string }>
+}
+
 // This function runs at build time to get articles
-async function getArticles(): Promise<HashnodeArticle[]> {
+async function getArticles(): Promise<Article[]> {
   try {
     const data = await fetchHashnodeArticles('maroayman', 1, 20)
     return data.articles || []
