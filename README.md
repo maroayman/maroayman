@@ -69,7 +69,7 @@ Want to connect? Let’s make magic happen! 🌈
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=maroayman&show_icons=true&theme=tokyonight" alt="Marwan's GitHub Stats" />
-  <img src="https://streak-stats.demolab.com?user=maroayman&theme=tokyonight" alt="GitHub Streak" />
+  <img src="https://github-readme-streak-stats-eight.vercel.app/?user=maroayman&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
 </p>
 
 ---
