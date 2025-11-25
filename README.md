@@ -70,9 +70,18 @@ Want to connect? Let’s make magic happen! 🌈
     <img src="https://github-readme-activity-graph.vercel.app/graph?username=maroayman&theme=react-dark" alt="Marwan's GitHub Metrics" />
   </a>
 </p>
+
 <p align="center">
-  <img src="https://readme-stats-self-nine.vercel.app/api?username=maroayman&show_icons=true&theme=tokyonight" alt="Marwan's GitHub Stats" />
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=maroayman&theme=tokyonight" alt="Marwan's GitHub Streak" />
+  <table>
+    <tr>
+      <td>
+        <img src="https://readme-stats-self-nine.vercel.app/api?username=maroayman&show_icons=true&theme=tokyonight" alt="Marwan's GitHub Stats" />
+      </td>
+      <td>
+        <img src="https://github-readme-streak-stats.herokuapp.com?user=maroayman&theme=tokyonight" alt="Marwan's GitHub Streak" />
+      </td>
+    </tr>
+  </table>
 </p>
 
 ## 🧠 Currently Working On  
