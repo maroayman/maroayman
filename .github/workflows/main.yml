@@ -1,26 +1,26 @@
-name: Generate GitHub Stats
+name: GitHub Profile Summary Cards
 
+# Trigger manually or on schedule
 on:
+  workflow_dispatch:
   schedule:
-    - cron: "0 */12 * * *"   # Auto run every 12 hours
-  workflow_dispatch:          # Manual run
+    - cron: "0 0 * * *"  # runs daily at midnight UTC
 
 jobs:
-  stats:
+  generate-cards:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      # Step 1: Checkout repository
+      - name: Checkout Repo
+        uses: actions/checkout@v3
 
-      - name: Generate Summary Cards
+      # Step 2: Generate GitHub Profile Summary Cards
+      - name: Generate Profile Summary Cards
         uses: vn7n24fzkq/github-profile-summary-cards@release
         with:
-          USERNAME: ${{ github.repository_owner }}
-
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "Update summary cards" || echo "No changes"
-          git push
+          USERNAME: maroayman
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: main
+          UTC_OFFSET: 0
+          AUTO_PUSH: true
