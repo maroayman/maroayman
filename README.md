@@ -64,26 +64,6 @@ Want to connect? Let’s make magic happen! 🌈
 
 ---
 
-## 📈 GitHub Metrics  
-<p align="center">
-  <a href="https://github.com/ashutosh00710/github-readme-activity-graph">
-    <img src="https://github-readme-activity-graph.vercel.app/graph?username=maroayman&theme=react-dark" alt="Marwan's GitHub Metrics" />
-  </a>
-</p>
-
-<p align="center">
-  <table>
-    <tr>
-      <td>
-        <img src="https://readme-stats-self-nine.vercel.app/api?username=maroayman&show_icons=true&theme=tokyonight" alt="Marwan's GitHub Stats" />
-      </td>
-      <td>
-        <img src="https://readme-streak-taupe.vercel.app?user=maroayman&theme=tokyonight" alt="Marwan's GitHub Streak" />
-      </td>
-    </tr>
-  </table>
-</p>
-
 ## 🧠 Currently Working On  
 * ⚙️ Enhancing **AWS multi-AZ infrastructure** using **Terraform**  
 * 🚀 Integrating **Jenkins CI/CD pipelines** with **SonarQube** for code quality  
@@ -93,10 +73,10 @@ Want to connect? Let’s make magic happen! 🌈
 ---
 
 ## 🎓 Current Training & Learning  
-* 📘 **Digital Egypt Initiative Training** — *Enrolled since June 2025 – Present*  
+* 📘 **Digital Egypt Initiative Training** — *Enrolled since June 2025 – December 2025*  
   Focused on DevOps, Cloud Computing, and Infrastructure as Code.  
 
-* ☁️ **Ghaymah Cloud Solutions Training** — *Enrolled since September 2025 – Present*  
+* ☁️ **Ghaymah Cloud Solutions Training** — *Enrolled since September 2025 – October 2025*  
   Hands-on projects in cloud deployment, CI/CD integration, and advanced automation practices.  
 
 ---
