@@ -78,7 +78,7 @@ Want to connect? Let’s make magic happen! 🌈
         <img src="https://readme-stats-self-nine.vercel.app/api?username=maroayman&show_icons=true&theme=tokyonight" alt="Marwan's GitHub Stats" />
       </td>
       <td>
-        <img src="https://github-readme-streak-stats.herokuapp.com?user=maroayman&theme=tokyonight" alt="Marwan's GitHub Streak" />
+        <img src="https://readme-streak-taupe.vercel.app?user=maroayman&theme=tokyonight" alt="Marwan's GitHub Streak" />
       </td>
     </tr>
   </table>
